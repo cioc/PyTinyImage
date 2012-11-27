@@ -25,7 +25,7 @@ ieee(1);
 
 if %nargin==1 then
   filename = "/tiny/tinyimages/tiny_images.bin";
-  //    filename = ''C:\atb\Databases\Tiny Images\tiny_images.bin'';
+  outputdir = "/tiny/tinyimages/code/scilab_tiny_images/output/";
 end;
 
 // Images
@@ -49,10 +49,13 @@ for i = 1:Nimages
   mseek(offset(i),fid,"cur");
   // L.37: No simple equivalent, so mtlb_fread() is called.
   tmp = mtlb_fread(fid,nbytesPerImage,"uc");
+  [ofid, err] = mopen(outputdir + string(i) + ".bin", "w");
+  mput(tmp, "uc", ofid);
+  mclose(ofid);
   img(:,i) = tmp;
 end;
 mclose(fid);
 
-// !! L.42: WARNING: Matlab reshape() suppresses singleton higher dimension, it is not the case for matrix.
 img = matrix(img,32,32,3,Nimages);
+
 endfunction
