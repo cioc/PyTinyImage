@@ -1,10 +1,9 @@
 PyTinyImage
 ===========
 
-Was going to be Scilab version of Matlab Files http://horatio.cs.nyu.edu/mit/tiny/data/index.html
+Python version of matlab code for accessing the tiny image dataset: http://horatio.cs.nyu.edu/mit/tiny/data/index.html
 
-Instead created a python version
-
+(Started as a conversion of matlab to scilab code.  That was a mistake.)
 
 USAGE
 =====
