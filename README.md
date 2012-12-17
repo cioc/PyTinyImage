@@ -10,7 +10,7 @@ USAGE
 
 loadFromKeywords.py
 
-usage: python loadFromKeywords <keyword,keyword,keyword,...> <max> <output path>
+usage: python loadFromKeywords &lt;keyword,keyword,keyword,...&gt; &lt;max&gt; &lt;output path&gt;
 
 e.g. python loadFromKeywords.py cat,hamburger 100 tacos
 -The last command will fetch a hundred cats and a hundred hamburgers for you.  These cats and hamburgers will be put in tacos/cat and tacos/hamburger, respectively.
