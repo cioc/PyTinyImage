@@ -1,12 +1,21 @@
 #function library for tiny image dataset
+import numpy
+import scipy
+import Image
 
 #paths to various data files
 meta_file_path = "/tiny/tinyimages/tiny_metadata.bin"
 data_file_path = "/tiny/tinyimages/tiny_images.bin"
  
 #open data files
-meta_file = open(meta_file_path, "rb")
-data_file = open(data_file_path, "rb")
+meta_file = 0
+data_file = 0
+
+def openTinyImage():
+ 	global meta_file
+	global data_file
+	meta_file = open(meta_file_path, "rb")
+	data_file = open(data_file_path, "rb")
 
 def strcmp(str1, str2):
   l = min(len(str1), len(str2)) 
@@ -75,6 +84,17 @@ def retrieveByTerm(search_term, max_pics):
 			if (found):
 				break  
 	return o
+
+def sliceToBin(indx):
+  offset = indx * 3072
+  data_file.seek(offset)
+  data = data_file.read(3072) 
+  return numpy.fromstring(data, dtype='uint8')
+
+def sliceToImage(data, path):
+	t = data.reshape(32,32,3, order="F").copy()
+	img = scipy.misc.toimage(t)
+	img.save(path)
 
 def closeTinyImage():
 	data_file.close()
