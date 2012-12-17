@@ -8,20 +8,13 @@ Python version of matlab code for accessing the tiny image dataset: http://horat
 USAGE
 =====
 
-First use read_tiny_metadata.py to extract the indicies of files that match your keyword.  
+loadFromKeywords.py
 
-+ Usage: python read_tiny_metadata.py <keyword> <max images>
+usage: python loadFromKeywords <keyword,keyword,keyword,...> <max> <output path>
 
-+ e.g. python read_tiny_metadata.py cat 2000
+e.g. python loadFromKeywords.py cat,hamburger 100 tacos
+-The last command will fetch a hundred cats and a hundred hamburgers for you.  These cats and hamburgers will be put in tacos/cat and tacos/hamburger, respectively.
 
-Next, get the representations of these images using loadTinyImages.py:
+tinyimage.py
 
-+ Usage: python loadTinyImages.py <output file from read_tiny_metadata>
-
-+ e.g. python loadTinyImages.py output.indices
-
-Finally, use create-image.py to turn the binary files into images
-
-+ Usage: python create-image.py <path to bin files> <output image type>
-
-+ e.g. python create-image.py output/ png
+Contains helpful functions for manipulating the tinyimage dataset.  See the source of loadFromKeywords.py to see a good use of the library.
